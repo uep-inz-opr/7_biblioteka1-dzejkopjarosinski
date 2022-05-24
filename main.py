@@ -41,7 +41,7 @@ for book_input in range(book_amount):
         iterate += 1
     else:
         for ksiazka in books:
-            if (book.tytul != ksiazka.tytul) & (book.autor != ksiazka.autor):
+            if (book.tytul != ksiazka.tytul) and (book.autor != ksiazka.autor):
                 books.append(ksiazka)
                 break
             else:
@@ -51,7 +51,7 @@ for book_input in range(book_amount):
 for i in range(len(books)-1):
     counter = 1
     for y in range(i + 1, len(books)):
-        if books[i].autor == books[y].autor & books[i].tytul == books[y].tytul:
+        if books[i].autor == books[y].autor and books[i].tytul == books[y].tytul:
             counter += 1
 
         else:
@@ -67,7 +67,7 @@ for i in range(len(books)):
 for i in range(len(books)-1):
     other = False
     for y in range(i+1, len(books)):
-        if books[i].autor == books[y].autor & books[i].tytul == books[y].tytul:
+        if books[i].tytul == books[y].tytul and books[i].autor == books[y].autor:
             if books[i].counter > books[y].counter:
                 no_copy.remove(books[y])
 
