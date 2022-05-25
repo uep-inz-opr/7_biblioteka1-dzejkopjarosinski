@@ -1,81 +1,61 @@
+#New approach to the problem 
+
+class Biblioteka:
+
+
+    # Define a class with list instead of variables
+    def __init__(self):
+        self.tytul = []
+        self.autor = []
+        self.rok_wydania = []
+
+
+  
+
+
+    def add_book(self, book):
+        self.rok_wydania.append(book)
+
+      # Define egzemplarz as a list and add append title, author to it
+    def egzemplarz(self, egzemplarz):
+        egzemplarz_list = list(egzemplarz)
+
+
+        if egzemplarz_list[0:2] in self.rok_wydania:
+         self.autor.append(egzemplarz_list[0:2])
+         self.tytul.append(egzemplarz_list[0])
+        else: 
+            liblary.add_book(egzemplarz_list[0:2])
+            self.autor.append(egzemplarz_list[0:2])
+            self.tytul.append(egzemplarz_list[0])
+
+
+    # Create counter 
+    def policz(self):
+
+        counter = []
+        sortowanie = []
+
+        for book in self.rok_wydania:
+            x = self.autor.count(book)
+            book = [book[0], book[1], x]
+            counter.append(book)
+            sortowanie = sorted(counter, key = lambda x: x[0])
+
+        for el in sortowanie:
+            elx = (el[0], el[1], el[2])
+            print(elx)
 
 
 
-class Book:
+#Create instance o fthe liblary class 
 
-    def __init__(self, tytul, autor):
-        self.tytul = tytul
-        self.autor = autor
-
-class Egzemplarz:
-
-
-    def __init__(self, tytul, autor, rok):
-        self.tytul = tytul
-        self.autor = autor
-        self.rok = int(rok)
+liblary =  Biblioteka()
+inp = int(input())
+for j in range(0,inp):
+    user_input = eval(input()) #Turns string into int
+    liblary.egzemplarz(user_input)
+    
+liblary.policz()
 
 
-
-
-def dodaj_egzemplarz(tytul, autor, rok):
-    egzemplarz = Egzemplarz(tytul, autor, rok)
-    egzemplarze.append(egzemplarz)
-
-
-books = []
-egzemplarze = []
-book_amount = int(input())
-iterate = 0
-
-
-for book_input in range(book_amount):
-    book_input = eval(input())
-    tytul = book_input[0]
-    autor = book_input[1]
-    rok = book_input[2]
-    dodaj_egzemplarz(tytul, autor, rok)
-    book = Book(tytul, autor)
-    if iterate == 0:
-        books.append(book)
-        iterate += 1
-    else:
-        for ksiazka in books:
-            if (book.tytul != ksiazka.tytul) and (book.autor != ksiazka.autor):
-                books.append(ksiazka)
-                break
-            else:
-                continue
-
-
-for i in range(len(books)-1):
-    counter = 1
-    for y in range(i + 1, len(books)):
-        if books[i].autor == books[y].autor and books[i].tytul == books[y].tytul:
-            counter += 1
-
-        else:
-            continue
-    books[i].counter = counter
-
-books[len(books)-1].counter = 1
-no_copy = [None] * len(books)
-for i in range(len(books)):
-    no_copy[i] = books[i]
-
-
-for i in range(len(books)-1):
-    other = False
-    for y in range(i+1, len(books)):
-        if books[i].tytul == books[y].tytul and books[i].autor == books[y].autor:
-            if books[i].counter > books[y].counter:
-                no_copy.remove(books[y])
-
-a = []
-for ksiazka in no_copy:
-    appender = (ksiazka.tytul, ksiazka.autor, ksiazka.counter)
-    a.append(appender)
-
-a = sorted(a, key=lambda x: x[0])
-for aappender in a:
-    print(appender)
